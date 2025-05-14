@@ -1,0 +1,10 @@
+domus\challenge\ChallengeApplication.class
+domus\challenge\service\impl\DirectorServiceImpl.class
+domus\challenge\dto\MoviePageDTO.class
+domus\challenge\exceptions\ValidateThresholdException.class
+domus\challenge\controllers\DirectorRestController.class
+domus\challenge\dto\DirectorsList.class
+domus\challenge\security\config\OpenApiConfig.class
+domus\challenge\dto\UserErrorResponse.class
+domus\challenge\service\DirectorService.class
+domus\challenge\dto\MovieDTO.class

@@ -1,0 +1,10 @@
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\ChallengeApplication.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\controllers\DirectorRestController.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\dto\DirectorsList.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\dto\MovieDTO.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\dto\MoviePageDTO.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\dto\UserErrorResponse.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\exceptions\ValidateThresholdException.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\security\config\OpenApiConfig.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\service\DirectorService.java
+C:\ws_springb\challenge-domus\src\main\java\domus\challenge\service\impl\DirectorServiceImpl.java
