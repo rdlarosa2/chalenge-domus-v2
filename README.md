@@ -12,9 +12,9 @@ The solution is implemented as an API REST called 'API Movie Director'.
 1. Execute a 'Command Prompt' application.
 2. Change the current directory to the directory where you will download the project.
    Example: cd C:\ws_springb
-3. Get the source code of the project executing the command: git clone https://github.com/rdlarosa2/challenge-domus.git
+3. Get the source code of the project executing the command: git clone https://github.com/rdlarosa2/chalenge-domus-v2.git
 4. Change the current directory (example: C:\ws_springb) to the directory C:\ws_springb\challenge-domus 
-executing the command: cd challenge-domus  
+executing the command: cd chalenge-domus-v2  
 5. Execute the command: mvn install
 6. To run the API REST execute the command: mvn spring-boot:run 
 
