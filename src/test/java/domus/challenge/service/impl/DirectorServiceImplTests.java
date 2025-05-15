@@ -9,15 +9,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.junit.jupiter.api.Test;
+import reactor.core.publisher.Mono;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.MonoProcessor;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static reactor.core.publisher.Mono.just;
 
 @ExtendWith(MockitoExtension.class)
 public class DirectorServiceImplTests {
 
-    @Mock
-    RestTemplate restTemplate;
+//    @Mock
+//    private WebClient webClient;
+//    RestTemplate restTemplate;
 
     @InjectMocks
     private DirectorServiceImpl directorService;
@@ -66,16 +71,35 @@ public class DirectorServiceImplTests {
                     + " }" ;
 
 
+    public DirectorServiceImplTests() {
+        // webClient = WebClient.create("https://challenge.iugolabs.com");
+    }
+
     @Test
     public void findByNumberOfMovies_thresholdEqualsThree() {
-        ResponseEntity<String> response = new ResponseEntity<>( this.response, null, 200); ;
-
-        //when( restTemplate.getForEntity( any() ,Mockito.any(Class.class) ) ).thenReturn(response);
 
         DirectorsList directorsList = directorService.findByNumberOfMovies(3);
 
         assert (directorsList.getDirectors().size() == 4);
     }
+
+    @Test
+    public void findByNumberOfMovies_thresholdEqualsFour() {
+
+        DirectorsList directorsList = directorService.findByNumberOfMovies(4);
+
+        assert (directorsList.getDirectors().size() == 2);
+    }
+
+
+    @Test
+    public void findByNumberOfMovies_thresholdEqualsFive() {
+
+        DirectorsList directorsList = directorService.findByNumberOfMovies(5);
+
+        assert (directorsList.getDirectors().size() == 1);
+    }
+
 
     @Test
     public void findByNumberOfMovies_thresholdEqualsNegativeNumber() {
@@ -85,7 +109,7 @@ public class DirectorServiceImplTests {
 
         DirectorsList directorsList = directorService.findByNumberOfMovies(-1);
 
-        assert (directorsList.getDirectors().size() == 0);
+        assert( directorsList.getDirectors().isEmpty() );
     }
 
 }

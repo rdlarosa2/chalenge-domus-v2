@@ -4,10 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domus.challenge.dto.DirectorsList;
+import domus.challenge.dto.MoviePageDTO;
 import domus.challenge.service.DirectorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,20 +18,19 @@ import java.util.TreeMap;
 @Service
 public class DirectorServiceImpl implements DirectorService {
 
-    private RestTemplate restTemplate = null ;
+    // private RestTemplate restTemplate = null ;
+
+    private final WebClient client;
 
     public DirectorServiceImpl() {
-        restTemplate = new RestTemplate();
-    }
-
-    public RestTemplate getRestTemplate() {
-        return restTemplate;
+        client = WebClient.create("https://challenge.iugolabs.com");
     }
 
     @Override
     public DirectorsList findByNumberOfMovies(int threshold) {
-        int numPage = 1;
+        Integer numPage = 1;
         int totalPages = 0;
+        String partialUrl ;
 
         DirectorsList directorsList = new DirectorsList();
 
@@ -40,11 +42,17 @@ public class DirectorServiceImpl implements DirectorService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = null ;
         do {
+            partialUrl = "/api/movies/search?page=" + numPage;
 
+            Mono<String> employeeMono = client.get()
+                    .uri( partialUrl )
+                    .retrieve()
+                    .bodyToMono(String.class);
 
-            response = restTemplate.getForEntity("https://challenge.iugolabs.com/api/movies/search?page=" + numPage , String.class);
+            String body = employeeMono.block();
+            // response = restTemplate.getForEntity("https://challenge.iugolabs.com/api/movies/search?page=" + numPage , String.class);
 
-            String body = response.getBody();
+            // String body = response.getBody();
 
             totalPages = procesarBody(body, numMoviesDirector);
 
@@ -52,7 +60,7 @@ public class DirectorServiceImpl implements DirectorService {
 
         } while (numPage <= totalPages);
 
-        numMoviesDirector.forEach( (k,v)-> {
+            numMoviesDirector.forEach( (k,v)-> {
             if (v > threshold) {
                 directorsList.addDirector(k);
             }
