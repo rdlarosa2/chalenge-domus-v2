@@ -17,12 +17,12 @@ The solution is implemented as an API REST called 'API Movie Director'.
 3. Get the source code of the project executing the command: git clone https://github.com/rdlarosa2/chalenge-domus-v2.git
 4. Change the current directory (example: C:\ws_springb) to the directory C:\ws_springb\chalenge-domus-v2 
 executing the command: cd chalenge-domus-v2  
-5. Execute the command: mvn install
-6. To run the API REST execute the command: mvn spring-boot:run 
 
-# Testing the API
+# Running the API
 
-To test the API you can open http://localhost:8080/api/directors?threshold=<i>threshold</i> in any browser.
+1. Execute the command: mvn install
+2. To run the API REST execute the command: mvn spring-boot:run 
+3. To test the API you can open http://localhost:8080/api/directors?threshold=<i>threshold</i> in any browser.
 You need to replace <i>threshold</i> with a non-negative number.   
 For example: http://localhost:8080/api/directors?threshold=3
 
