@@ -20,7 +20,7 @@ executing the command: cd chalenge-domus-v2
 
 # Running the API
 
-1. Execute the command: mvn install
+1. In the last directory (example: C:\ws_springb\chalenge-domus-v2) execute the command: mvn install
 2. To run the API REST execute the command: mvn spring-boot:run 
 3. To test the API you can open http://localhost:8080/api/directors?threshold=<i>threshold</i> in any browser.
 You need to replace <i>threshold</i> with a non-negative number.   
