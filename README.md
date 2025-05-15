@@ -5,7 +5,9 @@ The solution is implemented as an API REST called 'API Movie Director'.
 
 # Prerequisites (Windows 64 bits OS)
 
-1. You need to have jdk 21 installed in the machine where you will execute the API.
+1. You need to have installed jdk 21 in the machine where you will execute the API.
+2. You need to have installed a recent version of git
+3. You need to have installed a recent version of maven 
 
 # Installation (Windows 64 bits OS)
 
